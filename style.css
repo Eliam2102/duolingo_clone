@@ -2,3 +2,7 @@ body{
     margin: 0%;
     padding: 0%;
 }
+footer {
+    background-color: rgb(88, 204, 2);
+    margin-top: -5px;
+}

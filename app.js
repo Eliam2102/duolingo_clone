@@ -1,5 +1,4 @@
 //Comenzamos agregadno el favicon
-document.addEventListener('DOMContentLoaded', function() {
 const link = document.createElement('link');
 link.rel = 'icon';
 link.type = 'image/png';
@@ -7,8 +6,6 @@ link.href = 'src/favicon96x96.png';
 const head = document.querySelector('head');
 //lo asignamos como hijo al head
 head.appendChild(link);
-});
-
 
 
 // Creaciòn de  la barra de navegación y sus estilos
@@ -175,7 +172,7 @@ window.addEventListener('scroll', function() {
 // Creación de la sección 1
 const section1 = document.createElement('section');
 section1.id = 'section1';
-section1.style.padding = '100px';
+section1.style.padding = '20px';
 section1.style.marginBottom = '100px';
 section1.style.display = 'flex';
 section1.style.alignItems = 'center';
@@ -218,7 +215,7 @@ title.style.color = '#4B4B4B';
 contentSubsection.appendChild(title);
 
 // Crear el botón "EMPEZAR AHORA"
-const startButton = document.createElement('button');
+const startButton = document.createElement('a');
 startButton.textContent = 'EMPEZAR AHORA';
 startButton.style.backgroundColor = '#58CC02';
 startButton.style.color = 'white';
@@ -229,6 +226,8 @@ startButton.style.cursor = 'pointer';
 startButton.style.marginBottom = '20px';
 startButton.style.fontWeight = 'bold';
 startButton.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.9)';
+startButton.href = 'https://es.duolingo.com/register';
+startButton.style.textDecoration = 'none';
 startButton.addEventListener('mouseover', function () {
     startButton.style.filter = 'brightness(120%)';
     startButton.style.cursor = 'pointer';
@@ -239,7 +238,7 @@ startButton.addEventListener('mouseout', function () {
 contentSubsection.appendChild(startButton);
 
 // Crear el botón "YA TENGO UNA CUENTA"
-const accountButton = document.createElement('button');
+const accountButton = document.createElement('a');
 accountButton.textContent = 'YA TENGO UNA CUENTA';
 accountButton.style.backgroundColor = 'white';
 accountButton.style.color = '#199EDD';
@@ -251,6 +250,8 @@ accountButton.style.borderRadius = '10px';
 accountButton.style.cursor = 'pointer';
 accountButton.style.fontWeight = 'bold';
 accountButton.style.transition = 'background-color 0.3s';
+accountButton.href = 'https://es.duolingo.com/?isLoggingIn=true';
+accountButton.style.textDecoration = 'none';
 accountButton.addEventListener('mouseover', function () {
     accountButton.style.backgroundColor = '#f0f0f0';
     accountButton.style.cursor = 'pointer';
@@ -271,7 +272,7 @@ const idiomasBtn = document.getElementById('btnSpan');
 const navbarInit = document.querySelector('nav');
 
 // Creación del botón "EMPIEZA AHORA"
-const btnEmpiezaNow = document.createElement('button');
+const btnEmpiezaNow = document.createElement('a');
 btnEmpiezaNow.textContent = 'EMPIEZA AHORA';
 btnEmpiezaNow.style.backgroundColor = '#58CC02';
 btnEmpiezaNow.style.color = '#ffffff';
@@ -283,6 +284,8 @@ btnEmpiezaNow.style.fontWeight = 'bold';
 btnEmpiezaNow.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
 btnEmpiezaNow.style.transition = 'filter 0.3s';
 btnEmpiezaNow.style.borderBottom = '3px solid #ccc';
+btnEmpiezaNow.href  = 'https://es.duolingo.com/register';
+btnEmpiezaNow.style.textDecoration = 'none';
 btnEmpiezaNow.id = 'btnVerdeNow';
 
 // Cambiar le brillo con el cursos
@@ -367,6 +370,7 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     svgFlechaIzquierda.setAttribute("viewBox", "0 0 20 20");
     svgFlechaIzquierda.style.marginTop = "8px";
     svgFlechaIzquierda.style.cursor = "pointer";
+    
 
     // Crear el elemento path para la flecha izquierda
     const pathFlechaIzquierda = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -392,6 +396,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand.style.height = "25px";
     const spanUsa = document.createElement("span");
     spanUsa.textContent ="INGLÉS";
+    spanUsa.style.fontSize = "15px";
+    spanUsa.style.fontFamily = '"din-round", san-serif';
+    spanUsa.style.color= "#777777";
+    spanUsa.style.fontWeight = "bold";
     spanUsa.href = "https://es.duolingo.com/course/en/es/Aprender-ingl%C3%A9s";
     spanUsa.style.marginLeft = "5px";
 
@@ -414,6 +422,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand2.style.height = "25px";
     const spanFran = document.createElement("span");
     spanFran.textContent = "FRANCÉS";
+    spanFran.style.fontSize = "15px";
+    spanFran.style.fontFamily = '"din-round", san-serif';
+    spanFran.style.color= "#777777";
+    spanFran.style.fontWeight = "bold";
     spanFran.href = "https://es.duolingo.com/course/fr/es/Aprender-franc%C3%A9ss";
     spanFran.style.marginLeft = "6px";
 
@@ -436,6 +448,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand3.style.height = "25px";
     const spanGer = document.createElement("span");
     spanGer.textContent = "ALEMÁN";
+    spanGer.style.fontSize = "15px";
+    spanGer.style.fontFamily = '"din-round", san-serif';
+    spanGer.style.color= "#777777";
+    spanGer.style.fontWeight = "bold";
     spanGer.href = "https://es.duolingo.com/course/de/es/Aprender-alem%C3%A1n";
     spanGer.style.marginLeft = "6px";
 
@@ -458,6 +474,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand4.style.height = "25px";
     const spanItaly = document.createElement("span");
     spanItaly.textContent = "ITALIANO";
+    spanItaly.style.fontSize = "15px";
+    spanItaly.style.fontFamily = '"din-round", san-serif';
+    spanItaly.style.color= "#777777";
+    spanItaly.style.fontWeight = "bold";
     spanItaly.href = "https://es.duolingo.com/course/it/es/Aprender-italiano";
     spanItaly.style.marginLeft = "6px";
 
@@ -480,6 +500,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand5.style.height = "25px";
     const spanBra = document.createElement("span");
     spanBra.textContent = "PORTUGUÉS";
+    spanBra.style.fontSize = "15px";
+    spanBra.style.fontFamily = '"din-round", san-serif';
+    spanBra.style.color= "#777777";
+    spanBra.style.fontWeight = "bold";
     spanBra.href = "https://es.duolingo.com/course/pt/es/Aprender-portugu%C3%A9s";
     spanBra.style.marginLeft = "6px";
 
@@ -498,10 +522,14 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     const btnBand6 = document.createElement("a");
     btnBand6.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
     const imgBand6 = document.createElement("img");
-    imgBand6.src = "src/catalan.webp";
-    imgBand6.style.height = "25px";
+    imgBand6.src = "src/catalan.svg";
+    imgBand6.style.height = "30px";
     const spanCat = document.createElement("span");
     spanCat.textContent = "CATALÁN";
+    spanCat.style.fontSize = "15px";
+    spanCat.style.fontFamily = '"din-round", san-serif';
+    spanCat.style.color= "#777777";
+    spanCat.style.fontWeight = "bold";
     spanCat.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
     spanCat.style.marginLeft = "6px";
 
@@ -524,6 +552,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand7.style.height = "25px";
     const spanRuss = document.createElement("span");
     spanRuss.textContent = "RUSO";
+    spanRuss.style.fontSize = "15px";
+    spanRuss.style.fontFamily = '"din-round", san-serif';
+    spanRuss.style.color= "#777777";
+    spanRuss.style.fontWeight = "bold";
     spanRuss.href = "https://es.duolingo.com/course/ru/es/Aprender-ruso";
     spanRuss.style.marginLeft = "6px";
 
@@ -546,6 +578,10 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
     imgBand8.style.height = "35px";
     const spanSue = document.createElement("span");
     spanSue.textContent = "SUECO";
+    spanSue.style.fontSize = "15px";
+    spanSue.style.fontFamily = '"din-round", san-serif';
+    spanSue.style.color= "#777777";
+    spanSue.style.fontWeight = "bold";
     spanSue.href = "https://es.duolingo.com/course/sv/es/Aprender-sueco";
     spanSue.style.marginLeft = "6px";
 
@@ -580,7 +616,7 @@ document.body.insertBefore(subSectionHorizontal, document.getElementById('sectio
 // Crear la segunda sección con título
 const section2 = document.createElement('section');
 section2.id = "section2";
-section2.style.padding = "100px";
+section2.style.padding = "0px";
 section2.style.marginBottom = "100px";
 section2.style.display = "flex";
 section2.style.alignItems = "center";
@@ -591,13 +627,14 @@ document.body.appendChild(section2);
 const leftDiv2 = document.createElement('div');
 leftDiv2.style.marginRight = "10px";
 leftDiv2.style.width = "490px";
+leftDiv2.style.marginLeft = "60px";
 section2.appendChild(leftDiv2);
 
 const title2 = document.createElement('h2');
 title2.textContent = 'divertido, efectivo y gratis';
 title2.style.fontFamily = 'feather';
 title2.style.color= "#58CC02";
-title2.style.fontWeight = "700";
+title2.style.fontWeight = "750";
 title2.style.fontSize = "48px"
 title2.style.alignContent="justify-left";
 title2.style.fontWeight = 'bold';
@@ -606,6 +643,7 @@ leftDiv2.appendChild(title2);
 const parrafo2 = document.createElement('p');
 parrafo2.textContent = 'Aprender con Duolingo es divertido y los estudios demuestran que funciona. ¡En nuestras lecciones cortas ganarás puntos y habilitarás nuevas unidades al mismo tiempo que desarrollas tus habilidades de comunicación en la vida real!';
 parrafo2.style.alignContent="left"
+parrafo2.innerHTML = parrafo2.textContent.replace('los estudios demuestran que funciona.', '<span style="color: #1CB0F6; font-weight: bold; cursor: pointer;">los estudios demuestran que funciona.</span>');
 parrafo2.style.fontFamily = '"din-round", san-serif;';
 parrafo2.style.fontWeight = "500";
 parrafo2.style.fontSize = "17px";
@@ -635,7 +673,7 @@ document.body.appendChild(section3);
 // Crear la parte izquierda con gif
 const leftDiv3 = document.createElement('div');
 leftDiv3.style.marginRight = "80px";
-leftDiv3.style.width = "1900px"
+leftDiv3.style.width = "900px"
 section3.appendChild(leftDiv3);
 
 const gifImage3 = document.createElement('img');
@@ -1098,7 +1136,7 @@ leftSection10.appendChild(title10);
 const parrafo10 = document.createElement('p');
 parrafo10.textContent = '¡Desde aprender idiomas hasta alfabetismo! Con lecciones de fonética y cuentos divertidos, Duolingo ABC enseña a niños y niñas de entre 3 y 8 años a leer y escribir… ¡y es totalmente gratis!';
 parrafo9.textContent.alignContent = "justify";
-parrafo9.style.alignContent="justify";
+parrafo9.style.alignContent="left"
 parrafo9.style.fontFamily = '"din-round", san-serif;';
 parrafo9.style.fontWeight = "500";
 parrafo9.style.fontSize = "17px";
@@ -1117,6 +1155,7 @@ btn10.style.cursor = 'pointer';
 btn10.style.marginTop = '20px';
 btn10.style.borderBottom = '4px solid #CCCCCC';
 btn10.style.fontWeight = 'bold';
+btn10.style.marginLeft = '50px';
 
 btn10.addEventListener('mouseover', function () {
     btn10.style.filter = 'brightness(80%)';
@@ -1130,7 +1169,7 @@ leftSection10.appendChild(btn10);
 const rightSection10 = document.createElement('div');
 rightSection10.style.flex = '1';
 rightSection10.style.padding = '20px';
-rightSection10.style.marginRight = '-300px';
+rightSection10.style.marginRight = '-290px';
 section10.appendChild(rightSection10);
 
 const gifImage10 = document.createElement('img');
@@ -1230,7 +1269,7 @@ title12.style.textAlign = 'center';
 section12.appendChild(title12);
 
 // Botón verde más pequeño
-const btn12 = document.createElement('button');
+const btn12 = document.createElement('a');
 btn12.textContent = 'EMPIEZA AHORA';
 btn12.style.backgroundColor = '#58CC02';
 btn12.style.color = 'white';
@@ -1241,6 +1280,9 @@ btn12.style.cursor = 'pointer';
 btn12.style.fontWeight = 'bold';
 btn12.style.width = '250px';
 btn12.style.margin = '20px auto';
+btn12.style.textDecoration = 'none';
+btn12.style.textAlign = 'center';
+btn12.href = 'https://es.duolingo.com/register';
 btn12.addEventListener('mouseover', function () {
     btn12.style.filter = 'brightness(120%)';
 });
@@ -1257,24 +1299,393 @@ svg.style.width = '100%';
 svg.style.height = '100%';
 backgroundDiv.appendChild(svg);
 backgroundDiv.style.position = 'absolute';
-backgroundDiv.style.top = '0';
+backgroundDiv.style.top = '160px';
 backgroundDiv.style.left = '0';
 backgroundDiv.style.width = '100%';
 backgroundDiv.style.height = '100%';
-backgroundDiv.style.zIndex = '-1';
 section12.appendChild(backgroundDiv);
 
 // Agregar la sección al cuerpo del documento
 document.body.appendChild(section12);
 
 
-
-// Crear el footer con título
+//Creacion del footer
 const footer = document.createElement('footer');
-footer.style.margin = '0';
-footer.style.padding = '40px 32px 64px';
-footer.style.background = '#58CC02';
-footer.style.marginTop = '0';
-footer.style.display = 'flex';
-footer.style.flexDirection = 'column';
-footer.style.alignItems = 'center';
+footer.style.backgroundColor = '#58CC02';
+footer.style.fontFamily = 'din-round, sans-serif';
+footer.style.fontSize = '18px';
+footer.style.fontWeight = 'bold';
+footer.style.color = 'white';
+footer.style.alignContent = 'center';
+
+//Creacion de los div dentro de contenedor por medio de divs hijos
+const footerDiv = document.createElement('div');
+footer.appendChild(footerDiv);
+
+//Contenedor del footer, ya que, este footer se compone de dos secciones
+const containerFooter = document.createElement('div');
+footer.appendChild(containerFooter);
+
+//Creacion de divisiones "columnas" por cada uno de las listas que hay en el footer
+//Seccion sobre nosotros
+const infoSobreNosotros = document.createElement('div');
+
+//Instancia para la lista de vinculos abajo de cada sección.
+const vinculosSobreNosotros = document.createElement('div');
+vinculosSobreNosotros.textContent = 'Sobre nosotros';
+
+//agregamos como hijo la seccion anterior al contenedor de InfoSobre nosotros
+infoSobreNosotros.appendChild(vinculosSobreNosotros);
+
+
+//Creacion  de la instacian donde se albergara el arreglo procesado y recorrido por un forEach
+const ulSobreNosotros = document.createElement('ul');
+ulSobreNosotros.style.listStyleType = 'none';
+
+//Arreglo de los elementos de cada sección
+const enlacesSobreNosotros = [
+    { text: 'Cursos', href: 'https://es.duolingo.com/info' },
+    { text: 'Misión', href: 'https://es.duolingo.com/info' },
+    { text: 'Método de enseñanza', href: 'https://es.duolingo.com/approach' },
+    { text: 'Eficacia', href: 'https://es.duolingo.com/efficacy' },
+    { text: 'Equipo', href: 'https://careers.duolingo.com/about' },
+    { text: 'Investigación', href: 'https://research.duolingo.com/' },
+    { text: 'Empleo', href: 'https://careers.duolingo.com/' },
+    { text: 'Guía para uso de marca', href: 'https://design.duolingo.com/' },
+    { text: 'Tienda', href: 'https://store.duolingo.com/' },
+    { text: 'Prensa', href: 'https://press.duolingo.com/' },
+    { text: 'Inversionistas', href: 'https://investors.duolingo.com/' },
+    { text: 'Contáctanos', href: 'https://es.duolingo.com/contact' }
+];
+
+//creamos una función para iterar el arra enlacesSobreNosotros y con ellos creamos instancias para albergarlos
+//y poder hacer uso de ellos asi como asignamos porpiedades para eficientizar el esctructura.
+enlacesSobreNosotros.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    a.style.type ='none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    ulSobreNosotros.appendChild(li);
+});
+
+//Agregamos como hijo el contenedor de ulSobrenosotros que es la lista
+//a que se muestre en el contenedor  principal infoSobreNosotros
+infoSobreNosotros.appendChild(ulSobreNosotros);
+
+//Creacion de la sección Productos ahi se mostraran todos los elementos.
+const infoProductos = document.createElement('div');
+
+//Instancia para la lista de vinculos que aparecen abajo de cada sección.
+const vinculosProductos = document.createElement('div');
+vinculosProductos.textContent = 'Productos';
+
+//agregamos como hijo la seccion anterior al contenedor de InfoProductos
+infoProductos.appendChild(vinculosProductos);
+
+//Creacion  de la instacian donde se albergara el arreglo procesado y recorrido por un forEach
+const ulProductos = document.createElement('ul');
+
+//Arreglo de la información de la siguiente seccion.
+const enlacesProductos = [
+    { text: 'Duolingo', href: 'https://es.duolingo.com/' },
+    { text: 'Duolingo for Schools', href: 'https://schools.duolingo.com/' },
+    { text: 'Duolingo English Test', href: 'https://englishtest.duolingo.com/es' },
+    { text: 'Podcast', href: 'https://podcast.duolingo.com/' },
+    { text: 'Duolingo for Business', href: 'https://es.duolingo.com/business' },
+    { text: 'Súper Duolingo', href: 'https://es.duolingo.com/super' },
+    { text: 'Regala Súper Duolingo', href: 'https://es.duolingo.com/gift' }
+];
+
+//Recibi el arreglo  para recorrerlo con un forEach
+enlacesProductos.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    a.style.type ='none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    li.style.marginTop = '  19  px';
+    ulProductos.appendChild(li);
+});
+
+//El resultado lo mandamos al contenedor principal como hijo.
+infoProductos.appendChild(ulProductos);
+
+
+//Creacion de la seccion o columna de las aplicaciones.
+const appInfo = document.createElement('div');
+
+//Instancia para la lista de vinculos abajo de cada sección.
+const vinculosAplicaciones = document.createElement('div');
+vinculosAplicaciones.textContent = 'Aplicaciones';
+
+//agregamos como hijo la seccion anterior al contenedor de InfoApli.
+appInfo.appendChild(vinculosAplicaciones);
+
+//Creacion de la instancia donde se albergara el arreglo que contien lo elementos de esa sección
+const ulAplicaciones = document.createElement('ul');
+
+//Creación del arreglo
+const enlacesAplicaciones = [
+    { text: 'Duolingo para Android', href: 'https://play.google.com/store/apps/details?hl=es&id=com.duolingo&referrer=utm_source%3Dduolingo.com%26utm_medium%3Dduolingo_web%26utm_content%3Ddownload_button%26utm_campaign%3Dsite_map' },
+    { text: 'Duolingo para iOS', href: 'https://itunes.apple.com/es/app/duolingo-learn-spanish-french/id570060128?mt=8&at=1010lwpr' }
+];
+
+//Recorrer el arreglo y asignar las propiedads para eficientizar le tratado de cada uno de ellos.
+enlacesAplicaciones.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    a.style.type ='none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    li.style.marginTop = '40px';
+    ulAplicaciones.appendChild(li);
+});
+
+//Agregamos al contenedor principal la instacia que albergar el arrelgo procesado.
+appInfo.appendChild(ulAplicaciones);
+
+//Creacion de la division principal que se mostrara el pantalla.
+const infoAyudaSoporte = document.createElement('div');
+
+//Creacion de la primera div el titulo de dicha.
+const vinculosAyudaSoporte = document.createElement('div');
+vinculosAyudaSoporte.textContent = 'Ayuda y soporte';
+
+//Agregamos como hijo al contenedor principal, la seccion anterior.
+infoAyudaSoporte.appendChild(vinculosAyudaSoporte);
+
+//Instancia que albergara el arreglo procesado.
+const ulAyudaSoporte = document.createElement('ul');
+
+//metodo que nos permite la creación del arreglo.
+const enlacesAyudaSoporte = [
+    { text: 'App de Duolingo', href: 'https://support.duolingo.com/hc/es' },
+    { text: 'Schools', href: 'https://duolingoschools.zendesk.com/hc/en-us' },
+    { text: 'Duolingo English Test', href: 'https://englishtest.duolingo.com/faq' },
+    { text: 'Estado', href: 'https://status.duolingo.com/' }
+];
+
+//Procesar el arreglo
+enlacesAyudaSoporte.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    a.style.type ='none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    li.style.marginTop = '  25px';
+    ulAyudaSoporte.appendChild(li);
+});
+//Agregamos la instancia al contenedor principal.
+infoAyudaSoporte.appendChild(ulAyudaSoporte);
+
+//Creacion de la division principal que se mostrara el pantalla.
+const ultimaColumn = document.createElement('div');
+
+//Creacion de la primera div el titulo de dicha.
+const ultimoFooter = document.createElement('div');
+
+//Agregamos como hijo al contenedor principal, la seccion anterior.
+const vinculosPrivacidad = document.createElement('div');
+vinculosPrivacidad.textContent = 'Términos y privacidad';
+
+//Agregamos como hijo al contenedor principal, la seccion anterior.
+ultimoFooter.appendChild(vinculosPrivacidad);
+
+const TerminosPrivacidad = document.createElement('ul');
+
+const enlacesTerminosPrivacidad = [
+    { text: 'Normas de la comunidad', href: 'https://es.duolingo.com/guidelines' },
+    { text: 'Términos', href: 'https://es.duolingo.com/terms' },
+    { text: 'Privacidad', href: 'https://es.duolingo.com/privacy' }
+];
+
+enlacesTerminosPrivacidad.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    a.style.type ='none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    li.style.marginTop = '  25px';
+    TerminosPrivacidad.appendChild(li);
+});
+
+//Agreamos el resultado al contenedor principal.
+ultimoFooter.appendChild(TerminosPrivacidad);
+
+
+////Creacion de la division principal que se mostrara el pantalla.
+const ultimoSecFoo = document.createElement('div');
+
+//Creacion de la primera div el titulo de dicha.
+const vinculosSocF = document.createElement('div');
+vinculosSocF.textContent = 'Social';
+
+//Agregamos como hijo al contenedor principal, la seccion anterior.
+ultimoSecFoo.appendChild(vinculosSocF);
+
+//Instancia que albergara el arreglo procesado.
+const Social = document.createElement('ul');
+Social.style.listStyleType = 'none';
+
+//Creación del arreglo.
+const enlacesTerminosPrivacidad1 = [
+    { text: 'Normas de la comunidad', href: 'https://es.duolingo.com/guidelines' },
+    { text: 'Términos', href: 'https://es.duolingo.com/terms' },
+    { text: 'Privacidad', href: 'https://es.duolingo.com/privacy' }
+];
+
+//Procesar el arreglo
+enlacesTerminosPrivacidad1.forEach(enlace => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = enlace.href;
+    a.textContent = enlace.text;
+    a.style.color = '#a5ed6e';
+    a.style.textDecoration = 'none';
+    li.appendChild(a);
+    li.style.listStyleType = 'none';
+    li.style.marginLeft = '-40px';
+    Social.appendChild(li);
+});
+//Agrego los elementos a la sección principal.
+ultimoSecFoo.appendChild(Social);
+
+//Agregamos las dos seciones que queda alineads una arriba de la otra
+//en la parte inferior derecha
+//al contenedor princal que se mostrara en pantalla.
+ultimaColumn.appendChild(ultimoFooter);
+ultimaColumn.appendChild(ultimoSecFoo);
+
+//
+const footerEnd = document.createElement('div');
+footerEnd.style.display = 'flex';
+footerEnd.style.justifyContent = 'center';
+footerEnd.style.alignItems = 'center';
+footerEnd.style.width = '95%';
+footerEnd.style.height = '600px';
+footerEnd.style.margin = '0 auto';
+footerEnd.style.gap = '30px';
+footerEnd.appendChild(infoSobreNosotros);
+footerEnd.appendChild(infoProductos);
+footerEnd.appendChild(appInfo);
+footerEnd.appendChild(infoAyudaSoporte);
+footerEnd.appendChild(ultimaColumn);
+footer.appendChild(footerEnd);
+
+//Agregamos el cotenedo de la seccion final al footer principal.
+footer.appendChild(footerEnd);
+
+//Agregamos la linea blanca ue divide la secciones con la etiquieta HTML hr
+const lineaBlanca = document.createElement('hr');
+footer.appendChild(lineaBlanca);
+
+//Creamos una seccion final para ir colocando los elementos qeu se traeran luego.
+const footerFinalSec = document.createElement('div');
+footerFinalSec.style.display = 'flex';
+footerFinalSec.style.flexDirection = 'column';
+footerFinalSec.style.alignItems = 'justify-left';
+footerFinalSec.style.padding = '20px';
+footerFinalSec.style.width = '90%';
+footerFinalSec.style.height = '180px';
+footerFinalSec.style.backgroundColor = '#58CC02';
+footerFinalSec.style.gap = '25px';
+
+//TITULO DE LA SECCION "Idiomas de la página: "
+const textoFooterUlt = document.createElement('div');
+textoFooterUlt.textContent = 'Idiomas de la página:';
+textoFooterUlt.style.fontSize= '18px' ;
+textoFooterUlt.style.marginLeft = '30px';
+
+//Agregamos como hijo la seccion anterior.
+footerFinalSec.appendChild(textoFooterUlt);
+
+//Instancia que albergara el arreglo procesa
+const idiomasUlti = document.createElement('ul');
+idiomasUlti.style.display = 'flex';
+idiomasUlti.style.flexWrap = 'wrap';
+idiomasUlti.style.gap = '15px';
+idiomasUlti.style.marginLeft='50px';
+
+//ARREGLOOOO DE IDIOMAS ULTIMASEC.
+const idiomasFinal = [
+    { text: 'العربية', href: 'https://ar.duolingo.com/' },
+    { text: 'বাংলা', href: 'https://bn.duolingo.com/' },
+    { text: 'Čeština', href: 'https://cs.duolingo.com/' },
+    { text: 'Deutsch', href: 'https://de.duolingo.com/' },
+    { text: 'Ελληνικά', href: 'https://el.duolingo.com/' },
+    { text: 'English', href: 'https://en.duolingo.com/' },
+    { text: 'Español', href: 'https://es.duolingo.com/' },
+    { text: 'Français', href: 'https://fr.duolingo.com/' },
+    { text: 'हिंदी', href: 'https://hi.duolingo.com/' },
+    { text: 'Magyar', href: 'https://hu.duolingo.com/' },
+    { text: 'Bahasa Indonesia', href: 'https://id.duolingo.com/' },
+    { text: 'Italiano', href: 'https://it.duolingo.com/' },
+    { text: '日本語', href: 'https://ja.duolingo.com/' },
+    { text: '한국어', href: 'https://ko.duolingo.com/' },
+    { text: 'Nederlands', href: 'https://dn.duolingo.com/' },
+    { text: 'Polski', href: 'https://pl.duolingo.com/' },
+    { text: 'Português', href: 'https://pt.duolingo.com/' },
+    { text: 'Română', href: 'https://ro.duolingo.com/' },
+    { text: 'Русский', href: 'https://ru.duolingo.com/' },
+    { text: 'తెలుగు', href: 'https://te.duolingo.com/' },
+    { text: 'ภาษาไทย', href: 'https://th.duolingo.com/' },
+    { text: 'Tagalog', href: 'https://tl.duolingo.com/' },
+    { text: 'Türkçe', href: 'https://tr.duolingo.com/' },
+    { text: 'Українською', href: 'https://uk.duolingo.com/' },
+    { text: 'Tiếng Việt', href: 'https://vi.duolingo.com/' },
+    { text: '中文', href: 'https://zs.duolingo.com/' }
+];
+
+//Procesas idiomas.
+idiomasFinal.forEach((idioma, index) => {
+    const idiomaItem = document.createElement('li');
+    const idiomaLink = document.createElement('a');
+    idiomaLink.href = idioma.href;
+    idiomaLink.textContent = idioma.text;
+    idiomaLink.style.color = '#a5ed6e';
+    idiomaLink.style.textDecoration = 'none';
+    idiomaLink.style.type ='none';
+    idiomaItem.appendChild(idiomaLink);
+    idiomaItem.style.listStyleType = 'none';
+    idiomasUlti.appendChild(idiomaItem);
+    if (index === 13) {
+        const br = document.createElement('br');
+        idiomasUlti.appendChild(br);
+    }
+});
+
+//Le agregamos los idiomas del ultimo div al dic de footer final que la ulitma parte.
+footerFinalSec.appendChild(idiomasUlti);
+
+//Agregamos al footer nuestra ultima división que es el footer final anterioemtne creado.
+footer.appendChild(footerFinalSec);
+
+
+//Agregamos el footer como hijo al body del document html.
+document.body.appendChild(footer);
