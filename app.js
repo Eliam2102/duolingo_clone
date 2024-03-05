@@ -4,8 +4,6 @@ const link = document.createElement('link');
 link.rel = 'icon';
 link.type = 'image/png';
 link.href = 'src/favicon96x96.png';
-
-
 const head = document.querySelector('head');
 //lo asignamos como hijo al head
 head.appendChild(link);
@@ -25,7 +23,11 @@ navBar.style.borderRadius = '4px';
 navBar.style.borderBottomColor = 'rgba(0, 0, 0, 0.2)';
 navBar.id='barraNav';
 
-
+//Creacion de la funcion para que se muestre el borde inferior de la barra de naveagción la hacer scroll.
+window.addEventListener('scroll', () => {
+    // Cambiar el estilo de la barra de navegación
+    navBar.style.borderBottom = window.scrollY > 0 ? '2px solid rgb(200, 200, 200)' : 'none';
+});
 
 // Crear el logo en la navBar
 const logo = document.createElement('img');
@@ -122,38 +124,14 @@ navBar.appendChild(btn);
 const header = document.getElementById('header');
 header.appendChild(navBar);
 
-//FUNCIONALIDAD DE NavBar
 window.addEventListener('scroll', function() {
     const navBar = document.querySelector('nav');
     const header = document.querySelector('header');
-    const section1 = document.querySelector('#section1');
     const section5 = document.querySelector('#section5');
     const section8 = document.querySelector('#section8');
     const section9 = document.querySelector('#section9');
     const section13 = document.querySelector('#section13');
     const footer = document.querySelector('footer');
-
-    // Creamos el botón verde si no existe
-    let smallGreenButton = document.querySelector('#smallGreenButton');
-    if (!smallGreenButton) {
-        smallGreenButton = document.createElement('button');
-        smallGreenButton.id = 'smallGreenButton';
-        smallGreenButton.textContent = 'Empieza ahora';
-        smallGreenButton.style.backgroundColor = '#58CC02';
-        smallGreenButton.style.color = '#fff';
-        smallGreenButton.style.border = 'none';
-        smallGreenButton.style.borderRadius = '5px';
-        smallGreenButton.style.cursor = 'pointer';
-        smallGreenButton.style.position = 'absolute';
-        smallGreenButton.style.top = '50%';
-        smallGreenButton.style.right = '10px';
-        smallGreenButton.style.transform = 'translateY(-50%)';
-        smallGreenButton.style.zIndex = '999';
-        smallGreenButton.style.display = 'none';
-    }
-
-    // Ocultamos el botón verde por defecto
-    smallGreenButton.style.display = 'none';
 
     if (window.scrollY >= header.offsetTop && window.scrollY < section5.offsetTop) {
         navBar.style.position = 'fixed';
@@ -190,26 +168,11 @@ window.addEventListener('scroll', function() {
         navBar.style.zIndex = '999';
         document.body.style.paddingBottom = `${navBar.offsetHeight}px`;
     }
-
-    // Mostramos el botón verde si estamos después de la sección 1
-    if (window.scrollY > section1.offsetTop) {
-        smallGreenButton.style.display = 'block';
-    }
-
-    // Eliminamos el botón span si estamos después de la sección 1
-    const btnSpan = document.getElementById('btnSpan');
-    if (window.scrollY > section1.offsetTop && btnSpan) {
-        btnSpan.remove();
-    }
-
-    // Agregamos el botón verde a la barra de navegación
-    if (!document.getElementById('smallGreenButton') && window.scrollY > section1.offsetTop) {
-        navBar.appendChild(smallGreenButton);
-    }
 });
 
 
-// Creación la sección 1
+
+// Creación de la sección 1
 const section1 = document.createElement('section');
 section1.id = 'section1';
 section1.style.padding = '100px';
@@ -217,7 +180,6 @@ section1.style.marginBottom = '100px';
 section1.style.display = 'flex';
 section1.style.alignItems = 'center';
 section1.style.justifyContent = 'center';
-document.body.appendChild(section1);
 
 // Crear el contenedor de la sección 1
 const container1 = document.createElement('div');
@@ -226,10 +188,9 @@ container1.style.alignItems = 'center';
 container1.style.width = '100%';
 section1.appendChild(container1);
 
-// Creación la subsección para el GIF
+// Creación de la subsección para el GIF
 const gifSubsection = document.createElement('div');
 gifSubsection.style.flex = '1';
-
 
 // Crear el GIF
 const gif = document.createElement('img');
@@ -250,11 +211,10 @@ const title = document.createElement('h2');
 title.textContent = '¡La forma divertida, efectiva y gratis de aprender un idioma!';
 title.style.textAlign = 'center';
 title.style.fontFamily = 'din-round';
-title.style.fontStyle ='normal';
+title.style.fontStyle = 'normal';
 title.style.fontWeight = '700';
 title.style.fontSize = '32px';
-title.style.color= '#4B4B4B';
-title.style.fontWeight = '700';
+title.style.color = '#4B4B4B';
 contentSubsection.appendChild(title);
 
 // Crear el botón "EMPEZAR AHORA"
@@ -300,8 +260,67 @@ accountButton.addEventListener('mouseout', function () {
 });
 contentSubsection.appendChild(accountButton);
 
-// Agregar el contenedor de la sección 1 al cuerpo del documento
-section1.appendChild(container1);
+// Agregar la subsección del GIF y la subsección del contenido al contenedor de la sección 1
+container1.appendChild(gifSubsection);
+container1.appendChild(contentSubsection);
+
+
+// Agregar un evento scroll al objeto window para agregar un objeto
+// Almacena una referencia al botón de idiomas y al navbar
+const idiomasBtn = document.getElementById('btnSpan');
+const navbarInit = document.querySelector('nav');
+
+// Creación del botón "EMPIEZA AHORA"
+const btnEmpiezaNow = document.createElement('button');
+btnEmpiezaNow.textContent = 'EMPIEZA AHORA';
+btnEmpiezaNow.style.backgroundColor = '#58CC02';
+btnEmpiezaNow.style.color = '#ffffff';
+btnEmpiezaNow.style.padding = '10px 20px';
+btnEmpiezaNow.style.border = 'none';
+btnEmpiezaNow.style.borderRadius = '10px';
+btnEmpiezaNow.style.cursor = 'pointer';
+btnEmpiezaNow.style.fontWeight = 'bold';
+btnEmpiezaNow.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+btnEmpiezaNow.style.transition = 'filter 0.3s';
+btnEmpiezaNow.style.borderBottom = '3px solid #ccc';
+btnEmpiezaNow.id = 'btnVerdeNow';
+
+// Cambiar le brillo con el cursos
+btnEmpiezaNow.addEventListener('mouseover', function() {
+    btnEmpiezaNow.style.filter = 'brightness(120%)';
+});
+
+// Brillo normal al quitar el cursor
+btnEmpiezaNow.addEventListener('mouseout', function() {
+    btnEmpiezaNow.style.filter = 'brightness(100%)';
+});
+
+// Función para manejas si se agrega o se quita el btn verde y el de btnSpan
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 360) {
+        // Quitar el btnSpan
+        if (idiomasBtn && navbarInit.contains(idiomasBtn)) {
+            navbarInit.removeChild(idiomasBtn);
+        }
+        
+        // Agregar btnEmpiezaNow
+        if (!navbarInit.contains(btnEmpiezaNow)) {
+            navbarInit.appendChild(btnEmpiezaNow);
+        }
+    } else {
+        // Quitar el btnEmpiezaNow
+        if (navbarInit.contains(btnEmpiezaNow)) {
+            navbarInit.removeChild(btnEmpiezaNow);
+        }
+        
+        // Regresa todo a como estab en el inicio.
+        if (idiomasBtn && !navbarInit.contains(idiomasBtn)) {
+            navbarInit.appendChild(idiomasBtn);
+        }
+    }
+});
+
+// Agregar la sección 1 al cuerpo del documento
 document.body.appendChild(section1);
 
 // Creación de la subsección horizontal para las banderas
@@ -316,15 +335,12 @@ const containerBanderas = document.createElement('nav');
 containerBanderas.style.display = "flex";
 containerBanderas.style.alignItems = "center";
 containerBanderas.style.justifyContent = "flex-middle-end";
-containerBanderas.style.width = "1600";
+containerBanderas.style.width = "1600px";
 containerBanderas.style.height = "26px";
 containerBanderas.style.padding = "13px";
-containerBanderas.style.margin = "50px 80px -189px 75px";
-containerBanderas.style.border = "3px solid #61E002";
+containerBanderas.style.margin = "50px 80px -1890px 150px";
+containerBanderas.style.border = "none";
 containerBanderas.style.marginTop = "30px";
-
-
-
 
 // Agregar containerBanderas al subSectionHorizontal
 subSectionHorizontal.appendChild(containerBanderas);
@@ -337,189 +353,228 @@ document.body.appendChild(subSectionHorizontal);
 document.body.insertBefore(subSectionHorizontal, document.getElementById('section2'));
 
 
+    // Creación de lista de banderas
+    const idiomas = document.createElement("ul");
+    idiomas.style.display = "flex";
+    idiomas.style.padding = "0";
+    idiomas.style.margin = "0";
+    containerBanderas.appendChild(idiomas);
 
-// Creación de lista de banderas
-const idiomas = document.createElement("ul");
-idiomas.style.display = "flex";
-idiomas.style.padding = "0";
-idiomas.style.margin = "0";
-containerBanderas.appendChild(idiomas);
+    // Crear el elemento svg para la flecha izquierda
+    const svgFlechaIzquierda = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgFlechaIzquierda.setAttribute("width", "20");
+    svgFlechaIzquierda.setAttribute("height", "20");
+    svgFlechaIzquierda.setAttribute("viewBox", "0 0 20 20");
+    svgFlechaIzquierda.style.marginTop = "8px";
+    svgFlechaIzquierda.style.cursor = "pointer";
 
-// Creación de la bandera USA
-const usaBand = document.createElement("li");
-usaBand.style.display = "flex";
-usaBand.style.marginRight = "18px";
-usaBand.style.alignItems = "center";
-usaBand.style.cursor = "pointer";
-const btnBand = document.createElement("a");
-btnBand.href = "https://es.duolingo.com/course/en/es/Aprender-ingl%C3%A9s";
-const imgBand = document.createElement("img");
-imgBand.src = "src/ingles.webp";
-imgBand.style.height = "25px";
-const spanUsa = document.createElement("span");
-spanUsa.textContent ="INGLÉS";
-spanUsa.href = "https://es.duolingo.com/course/en/es/Aprender-ingl%C3%A9s";
-spanUsa.style.marginLeft = "5px";
+    // Crear el elemento path para la flecha izquierda
+    const pathFlechaIzquierda = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    pathFlechaIzquierda.setAttribute("d", "M10 5 L5 10 L10 15");
+    pathFlechaIzquierda.setAttribute("stroke", "gray");
+    pathFlechaIzquierda.setAttribute("fill", "none");
 
-// Agregar elementos al contenedor de la bandera
-btnBand.appendChild(imgBand);
-usaBand.appendChild(btnBand);
-usaBand.appendChild(spanUsa);
-idiomas.appendChild(usaBand);
+    // Agregar el path a svgFlechaIzquierda
+    svgFlechaIzquierda.appendChild(pathFlechaIzquierda);
+    // Agregar al container de banderas
+    idiomas.appendChild(svgFlechaIzquierda);
 
-//BANDERA DE FRANCIA
-const franBand = document.createElement ("li");
-franBand.style.display ="flex";
-franBand.style.alignItems = "center";
-franBand.style.cursor = "pointer";
-franBand.style.marginRight = "18px";
-const btnBand2 = document.createElement("a");
-btnBand2.href = "https://es.duolingo.com/course/fr/es/Aprender-franc%C3%A9ss";
-const imgBand2 = document.createElement("img");
-imgBand2.src = "src/Francia_bandera.webp";
-imgBand2.style.height = "25px";
-const spanFran = document.createElement("span");
-spanFran.textContent = "FRANCÉS";
-spanFran.href = "https://es.duolingo.com/course/fr/es/Aprender-franc%C3%A9ss";
-spanFran.style.marginLeft = "6px";
+    // Creación de la bandera USA
+    const usaBand = document.createElement("li");
+    usaBand.style.display = "flex";
+    usaBand.style.marginRight = "18px";
+    usaBand.style.alignItems = "center";
+    usaBand.style.cursor = "pointer";
+    const btnBand = document.createElement("a");
+    btnBand.href = "https://es.duolingo.com/course/en/es/Aprender-ingl%C3%A9s";
+    const imgBand = document.createElement("img");
+    imgBand.src = "src/ingles.webp";
+    imgBand.style.height = "25px";
+    const spanUsa = document.createElement("span");
+    spanUsa.textContent ="INGLÉS";
+    spanUsa.href = "https://es.duolingo.com/course/en/es/Aprender-ingl%C3%A9s";
+    spanUsa.style.marginLeft = "5px";
 
-//Agregar elementos de la bandera de francia
-btnBand2.appendChild(imgBand2);
-franBand.appendChild(btnBand2);
-franBand.appendChild(spanFran);
-idiomas.appendChild(franBand);
+    // Agregar elementos al contenedor de la bandera
+    btnBand.appendChild(imgBand);
+    usaBand.appendChild(btnBand);
+    usaBand.appendChild(spanUsa);
+    idiomas.appendChild(usaBand);
 
-//Bandera Alemán
-const gerBand = document.createElement ("li");
-gerBand.style.display ="flex";
-gerBand.style.alignItems = "center";
-gerBand.style.cursor = "pointer";
-gerBand.style.marginRight = "18px"
-const btnBand3 = document.createElement("a");
-btnBand3.href = "https://es.duolingo.com/course/de/es/Aprender-alem%C3%A1n";
-const imgBand3 = document.createElement("img");
-imgBand3.src = "src/Alemania_bandera.webp";
-imgBand3.style.height = "25px";
-const spanGer = document.createElement("span");
-spanGer.textContent = "ALEMÁN";
-spanGer.href = "https://es.duolingo.com/course/de/es/Aprender-alem%C3%A1n";
-spanGer.style.marginLeft = "6px";
+    //BANDERA DE FRANCIA
+    const franBand = document.createElement ("li");
+    franBand.style.display ="flex";
+    franBand.style.alignItems = "center";
+    franBand.style.cursor = "pointer";
+    franBand.style.marginRight = "18px";
+    const btnBand2 = document.createElement("a");
+    btnBand2.href = "https://es.duolingo.com/course/fr/es/Aprender-franc%C3%A9ss";
+    const imgBand2 = document.createElement("img");
+    imgBand2.src = "src/Francia_bandera.webp";
+    imgBand2.style.height = "25px";
+    const spanFran = document.createElement("span");
+    spanFran.textContent = "FRANCÉS";
+    spanFran.href = "https://es.duolingo.com/course/fr/es/Aprender-franc%C3%A9ss";
+    spanFran.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de alemania
-btnBand3.appendChild(imgBand3);
-gerBand.appendChild(btnBand3);
-gerBand.appendChild(spanGer);
-idiomas.appendChild(gerBand);
+    //Agregar elementos de la bandera de francia
+    btnBand2.appendChild(imgBand2);
+    franBand.appendChild(btnBand2);
+    franBand.appendChild(spanFran);
+    idiomas.appendChild(franBand);
 
-//Bandera Italiana
-const italyBand = document.createElement ("li");
-italyBand.style.display ="flex";
-italyBand.style.alignItems = "center";
-italyBand.style.cursor = "pointer";
-italyBand.style.marginRight = "18px"
-const btnBand4 = document.createElement("a");
-btnBand4.href = "https://es.duolingo.com/course/it/es/Aprender-italiano";
-const imgBand4 = document.createElement("img");
-imgBand4.src = "src/bandera4.webp";
-imgBand4.style.height = "25px";
-const spanItaly = document.createElement("span");
-spanItaly.textContent = "ITALIANO";
-spanItaly.href = "https://es.duolingo.com/course/it/es/Aprender-italiano";
-spanItaly.style.marginLeft = "6px";
+    //Bandera Alemán
+    const gerBand = document.createElement ("li");
+    gerBand.style.display ="flex";
+    gerBand.style.alignItems = "center";
+    gerBand.style.cursor = "pointer";
+    gerBand.style.marginRight = "18px"
+    const btnBand3 = document.createElement("a");
+    btnBand3.href = "https://es.duolingo.com/course/de/es/Aprender-alem%C3%A1n";
+    const imgBand3 = document.createElement("img");
+    imgBand3.src = "src/Alemania_bandera.webp";
+    imgBand3.style.height = "25px";
+    const spanGer = document.createElement("span");
+    spanGer.textContent = "ALEMÁN";
+    spanGer.href = "https://es.duolingo.com/course/de/es/Aprender-alem%C3%A1n";
+    spanGer.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de Italia
-btnBand4.appendChild(imgBand4);
-italyBand.appendChild(btnBand4);
-italyBand.appendChild(spanItaly);
-idiomas.appendChild(italyBand);
+    //Agregar elementos de la bandera de alemania
+    btnBand3.appendChild(imgBand3);
+    gerBand.appendChild(btnBand3);
+    gerBand.appendChild(spanGer);
+    idiomas.appendChild(gerBand);
 
-//Bandera brasil
-const braBand = document.createElement ("li");
-braBand.style.display ="flex";
-braBand.style.alignItems = "center";
-braBand.style.cursor = "pointer";
-braBand.style.marginRight = "18px"
-const btnBand5 = document.createElement("a");
-btnBand5.href = "https://es.duolingo.com/course/pt/es/Aprender-portugu%C3%A9s";
-const imgBand5 = document.createElement("img");
-imgBand5.src = "src/bandera5.webp";
-imgBand5.style.height = "25px";
-const spanBra = document.createElement("span");
-spanBra.textContent = "PORTUGUÉS";
-spanBra.href = "https://es.duolingo.com/course/pt/es/Aprender-portugu%C3%A9s";
-spanBra.style.marginLeft = "6px";
+    //Bandera Italiana
+    const italyBand = document.createElement ("li");
+    italyBand.style.display ="flex";
+    italyBand.style.alignItems = "center";
+    italyBand.style.cursor = "pointer";
+    italyBand.style.marginRight = "18px"
+    const btnBand4 = document.createElement("a");
+    btnBand4.href = "https://es.duolingo.com/course/it/es/Aprender-italiano";
+    const imgBand4 = document.createElement("img");
+    imgBand4.src = "src/bandera4.webp";
+    imgBand4.style.height = "25px";
+    const spanItaly = document.createElement("span");
+    spanItaly.textContent = "ITALIANO";
+    spanItaly.href = "https://es.duolingo.com/course/it/es/Aprender-italiano";
+    spanItaly.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de brasil
-btnBand5.appendChild(imgBand5);
-braBand.appendChild(btnBand5);
-braBand.appendChild(spanBra);
-idiomas.appendChild(braBand);
+    //Agregar elementos de la bandera de Italia
+    btnBand4.appendChild(imgBand4);
+    italyBand.appendChild(btnBand4);
+    italyBand.appendChild(spanItaly);
+    idiomas.appendChild(italyBand);
 
-//Bandera CATALAN
-const catBand = document.createElement ("li");
-catBand.style.display ="flex";
-catBand.style.alignItems = "center";
-catBand.style.cursor = "pointer";
-catBand.style.marginRight = "18px"
-const btnBand6 = document.createElement("a");
-btnBand6.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
-const imgBand6 = document.createElement("img");
-imgBand6.src = "src/catalan.webp";
-imgBand6.style.height = "25px";
-const spanCat = document.createElement("span");
-spanCat.textContent = "CATALÁN";
-spanCat.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
-spanCat.style.marginLeft = "6px";
+    //Bandera brasil
+    const braBand = document.createElement ("li");
+    braBand.style.display ="flex";
+    braBand.style.alignItems = "center";
+    braBand.style.cursor = "pointer";
+    braBand.style.marginRight = "18px"
+    const btnBand5 = document.createElement("a");
+    btnBand5.href = "https://es.duolingo.com/course/pt/es/Aprender-portugu%C3%A9s";
+    const imgBand5 = document.createElement("img");
+    imgBand5.src = "src/bandera5.webp";
+    imgBand5.style.height = "25px";
+    const spanBra = document.createElement("span");
+    spanBra.textContent = "PORTUGUÉS";
+    spanBra.href = "https://es.duolingo.com/course/pt/es/Aprender-portugu%C3%A9s";
+    spanBra.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de CATALAN
-btnBand6.appendChild(imgBand6);
-catBand.appendChild(btnBand6);
-catBand.appendChild(spanCat);
-idiomas.appendChild(catBand);
+    //Agregar elementos de la bandera de brasil
+    btnBand5.appendChild(imgBand5);
+    braBand.appendChild(btnBand5);
+    braBand.appendChild(spanBra);
+    idiomas.appendChild(braBand);
 
-//Bandera RUSO
-const russBand = document.createElement ("li");
-russBand.style.display ="flex";
-russBand.style.alignItems = "center";
-russBand.style.cursor = "pointer";
-russBand.style.marginRight = "18px"
-const btnBand7 = document.createElement("a");
-btnBand7.href = "https://es.duolingo.com/course/ru/es/Aprender-ruso";
-const imgBand7 = document.createElement("img");
-imgBand7.src = "src/RUSO.png";
-imgBand7.style.height = "25px";
-const spanRuss = document.createElement("span");
-spanRuss.textContent = "RUSO";
-spanRuss.href = "https://es.duolingo.com/course/ru/es/Aprender-ruso";
-spanRuss.style.marginLeft = "6px";
+    //Bandera CATALAN
+    const catBand = document.createElement ("li");
+    catBand.style.display ="flex";
+    catBand.style.alignItems = "center";
+    catBand.style.cursor = "pointer";
+    catBand.style.marginRight = "18px"
+    const btnBand6 = document.createElement("a");
+    btnBand6.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
+    const imgBand6 = document.createElement("img");
+    imgBand6.src = "src/catalan.webp";
+    imgBand6.style.height = "25px";
+    const spanCat = document.createElement("span");
+    spanCat.textContent = "CATALÁN";
+    spanCat.href = "https://es.duolingo.com/course/ca/es/Aprender-catal%C3%A1n";
+    spanCat.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de ruso
-btnBand7.appendChild(imgBand7);
-russBand.appendChild(btnBand7);
-russBand.appendChild(spanRuss);
-idiomas.appendChild(russBand);
+    //Agregar elementos de la bandera de CATALAN
+    btnBand6.appendChild(imgBand6);
+    catBand.appendChild(btnBand6);
+    catBand.appendChild(spanCat);
+    idiomas.appendChild(catBand);
 
-//Bandera suecia
-const sueBand = document.createElement ("li");
-sueBand.style.display ="flex";
-sueBand.style.alignItems = "center";
-sueBand.style.cursor = "pointer";
-sueBand.style.marginRight = "18px"
-const btnBand8 = document.createElement("a");
-btnBand8.href = "https://es.duolingo.com/course/sv/es/Aprender-sueco";
-const imgBand8 = document.createElement("img");
-imgBand8.src = "src/suecia.png";
-imgBand8.style.height = "35px";
-const spanSue = document.createElement("span");
-spanSue.textContent = "SUECO";
-spanSue.href = "https://es.duolingo.com/course/sv/es/Aprender-sueco";
-spanSue.style.marginLeft = "6px";
+    //Bandera RUSO
+    const russBand = document.createElement ("li");
+    russBand.style.display ="flex";
+    russBand.style.alignItems = "center";
+    russBand.style.cursor = "pointer";
+    russBand.style.marginRight = "18px"
+    const btnBand7 = document.createElement("a");
+    btnBand7.href = "https://es.duolingo.com/course/ru/es/Aprender-ruso";
+    const imgBand7 = document.createElement("img");
+    imgBand7.src = "src/RUSO.png";
+    imgBand7.style.height = "25px";
+    const spanRuss = document.createElement("span");
+    spanRuss.textContent = "RUSO";
+    spanRuss.href = "https://es.duolingo.com/course/ru/es/Aprender-ruso";
+    spanRuss.style.marginLeft = "6px";
 
-//Agregar elementos de la bandera de suecia
-btnBand8.appendChild(imgBand8);
-sueBand.appendChild(btnBand8);
-sueBand.appendChild(spanSue);
-idiomas.appendChild(sueBand);
+    //Agregar elementos de la bandera de ruso
+    btnBand7.appendChild(imgBand7);
+    russBand.appendChild(btnBand7);
+    russBand.appendChild(spanRuss);
+    idiomas.appendChild(russBand);
+
+    //Bandera suecia
+    const sueBand = document.createElement ("li");
+    sueBand.style.display ="flex";
+    sueBand.style.alignItems = "center";
+    sueBand.style.cursor = "pointer";
+    sueBand.style.marginRight = "18px"
+    const btnBand8 = document.createElement("a");
+    btnBand8.href = "https://es.duolingo.com/course/sv/es/Aprender-sueco";
+    const imgBand8 = document.createElement("img");
+    imgBand8.src = "src/suecia.png";
+    imgBand8.style.height = "35px";
+    const spanSue = document.createElement("span");
+    spanSue.textContent = "SUECO";
+    spanSue.href = "https://es.duolingo.com/course/sv/es/Aprender-sueco";
+    spanSue.style.marginLeft = "6px";
+
+    //Agregar elementos de la bandera de suecia
+    btnBand8.appendChild(imgBand8);
+    sueBand.appendChild(btnBand8);
+    sueBand.appendChild(spanSue);
+    idiomas.appendChild(sueBand);
+
+    // Agregar el elemento svg para la flecha derecha
+    const svgFlechaDerecha = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgFlechaDerecha.setAttribute("width", "20");
+    svgFlechaDerecha.setAttribute("height", "20");
+    svgFlechaDerecha.setAttribute("viewBox", "0 0 20 20");
+    svgFlechaDerecha.style.marginTop = "9px";
+    svgFlechaDerecha.style.cursor = "pointer";
+
+    // Crear el elemento path para la flecha derecha
+    const pathFlechaDerecha = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    pathFlechaDerecha.setAttribute("d", "M5 5 L10 10 L5 15");
+    pathFlechaDerecha.setAttribute("stroke", "gray");
+    pathFlechaDerecha.setAttribute("fill", "none");
+
+    // Agregar el path a svgFlechaDerecha
+    svgFlechaDerecha.appendChild(pathFlechaDerecha);
+    //Agregar la flecha al container de banderas
+    idiomas.appendChild(svgFlechaDerecha);
+
+    
 
 
 // Crear la segunda sección con título
@@ -745,67 +800,67 @@ buttonContainer.style.margin = 'auto';
 buttonContainer.style.marginBottom = '20px';
 section6.appendChild(buttonContainer);
 
-// Botón de  la App Store
+// Funcion para cambiar a obscurecer el btn por ello se le baja el brillo
+function lightenButton(button) {
+    button.style.filter = 'brightness(80%)';
+}
+
+// Cuando se quita el curso el btn regresa a su brillo original.
+function restoreButton(button) {
+    button.style.filter = 'brightness(100%)';
+}
+
+// Dispoible en la Appstore
 const appStoreButton = document.createElement('button');
+appStoreButton.type = 'button';
 appStoreButton.style.backgroundColor = 'white';
 appStoreButton.style.color = '#777777';
-appStoreButton.style.padding = '10px 20px';
-appStoreButton.style.border = '2px solid #777777';
-appStoreButton.style.borderRadius = '25px';
+appStoreButton.style.padding = '8px 16px';
+appStoreButton.style.border = '2px solid #DDDDDD';
+appStoreButton.style.borderRadius = '20px';
 appStoreButton.style.cursor = 'pointer';
-appStoreButton.style.height = '85px';
+appStoreButton.style.height = '90px';
+appStoreButton.style.width = '250px';
 appStoreButton.style.marginRight = '10px';
-appStoreButton.addEventListener('mouseenter', function () {
-    appStoreButton.style.backgroundColor = '#f0f0f0';
+appStoreButton.innerHTML = '<div style="display:flex; align-items:center; justify-content: center;"><img src="src/iconoapple.png" alt="apple" style="width: 30px;"><div style="text-align: center; padding-left: 5px;"><p>Descárgalo en la</p><p>App Store</p></div></div>';
+
+// Eventos para estilos del btn
+appStoreButton.addEventListener('mouseover', function() {
+    lightenButton(appStoreButton);
 });
-appStoreButton.addEventListener('mouseleave', function () {
-    appStoreButton.style.backgroundColor = 'white';
+
+appStoreButton.addEventListener('mouseout', function() {
+    restoreButton(appStoreButton);
 });
+//Agregarlo como hijo al btn correspondiente
 buttonContainer.appendChild(appStoreButton);
 
-// Icono de la App Store
-const appStoreIcon = document.createElement('img');
-appStoreIcon.src = 'src/iconoapple.png';
-appStoreIcon.style.width = '60px';
-appStoreIcon.style.marginRight = '10px';
-appStoreButton.appendChild(appStoreIcon);
-
-// Texto del botón  App Store
-const appStoreButtonText = document.createTextNode('Descárgalo en la App Store');
-appStoreButton.appendChild(appStoreButtonText);
-
-// Botón de Google Play"
+// Creación del botón de Google Play
 const googlePlayButton = document.createElement('button');
+googlePlayButton.type = 'button';
 googlePlayButton.style.backgroundColor = 'white';
 googlePlayButton.style.color = '#777777';
-googlePlayButton.style.padding = '10px 20px';
-googlePlayButton.style.border = '2px solid #777777';
-googlePlayButton.style.borderRadius = '25px';
+googlePlayButton.style.padding = '8px 16px';
+googlePlayButton.style.border = '2px solid #DDDDDD';
+googlePlayButton.style.borderRadius = '20px';
 googlePlayButton.style.cursor = 'pointer';
-googlePlayButton.style.height = '85px';
-googlePlayButton.style.width = '190px';
-googlePlayButton.style.marginLeft = '10px';
-googlePlayButton.addEventListener('mouseenter', function () {
-    googlePlayButton.style.backgroundColor = '#f0f0f0';
+googlePlayButton.style.height = '90px';
+googlePlayButton.style.width = '250px';
+googlePlayButton.innerHTML = '<div style="display:flex; align-items:center; justify-content: center;"><img src="src/google-play.png" alt="GP" style="width: 25px;"><div style="text-align: center; padding-left: 5px;"><p>Disponible en</p><p>Google Play</p></div></div>';
+
+// Eventos estilo del boton respecto al cursor
+googlePlayButton.addEventListener('mouseover', function() {
+    lightenButton(googlePlayButton);
 });
-googlePlayButton.addEventListener('mouseleave', function () {
-    googlePlayButton.style.backgroundColor = 'white';
+
+googlePlayButton.addEventListener('mouseout', function() {
+    restoreButton(googlePlayButton);
 });
+//Agregarlo como hijo al btn correspondiente
 buttonContainer.appendChild(googlePlayButton);
 
-// Icono de Google Play
-const googlePlayIcon = document.createElement('img');
-googlePlayIcon.src = 'src/google-play.png';
-googlePlayIcon.style.width = '50px';
-googlePlayIcon.style.marginRight = '10px';
-googlePlayButton.appendChild(googlePlayIcon);
 
-// Texto del botón "Disponible en Google Play"
-const googlePlayButtonText = document.createTextNode('Disponible en Google Play');
-googlePlayButton.appendChild(googlePlayButtonText);
-
-
-//Gif de la sEIS7CJ52h0BkdSDiWFfC8k0iczaQvJYZ3x7Hffz90qtnJcOJaOjM87HKPaAKUZX50YTHhsK2lIhzIKyfVyQQQOVG7OodAXkJBX3k8WZWuTGkPpNLHY
+//Gif del área dos.
 const gifArea2 = document.createElement('div');
 gifArea2.style.width = '30%';
 gifArea2.style.padding = '20px';
